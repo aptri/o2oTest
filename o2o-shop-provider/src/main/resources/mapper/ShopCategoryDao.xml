@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.o2o.dao.ShopCategoryDao">
+    <resultMap id="resultShopCategoryList" type="com.imooc.o2o.entity.ShopCategory">
+        <id column="shop_category_id" property="shopCategoryId"></id>
+        <result column="SHOP_CATEGORY_NAME" property="shopCategoryName"></result>
+        <result column="SHOP_CATEGORY_DESC" property="shopCategoryDesc"></result>
+        <result column="SHOP_CATEGORY_IMG" property="shopCategoryImg"></result>
+        <result column="PRIORITY" property="priority"></result>
+        <result column="CREATE_TIME" property="createTime"></result>
+        <result column="LAST_EDIT_TIME" property="lastEditTime"></result>
+        <result column="PARENT_ID" property="shopCategoryParentId"></result>
+    </resultMap>
+    <select id="queryShopCategory" resultMap="resultShopCategoryList">
+        select
+        SHOP_CATEGORY_ID,SHOP_CATEGORY_NAME,SHOP_CATEGORY_DESC,SHOP_CATEGORY_IMG,PRIORITY,CREATE_TIME,LAST_EDIT_TIME,PARENT_ID
+        from T_SHOP_CATEGORY t where t.PARENT_ID is null
+    </select>
+</mapper>
